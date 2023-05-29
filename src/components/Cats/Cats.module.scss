@@ -1,0 +1,44 @@
+$grid-columns: 4;
+$grid-gap: 20px;
+
+$breakpoints: (
+  small: 20rem,
+  medium: 48rem,
+  large: 62rem,
+  xlarge: 75rem,
+);
+
+@mixin respond-to($breakpoint) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+.cats {
+  display: grid;
+  grid-template-columns: repeat($grid-columns, 1fr);
+  grid-gap: $grid-gap;
+
+  @include respond-to(small) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @include respond-to(medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(large) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to(xlarge) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.spinnerContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
